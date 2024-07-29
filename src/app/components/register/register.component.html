@@ -43,7 +43,7 @@
 
             <div class="alert alert-danger" *ngIf="registerForm.get('rePassword')?.errors && registerForm.get('rePassword')?.touched">
                 <p *ngIf=" registerForm.get('rePassword')?.getError('required') ">RePassword is Required</p>
-                <p *ngIf=" registerForm.get('rePassword')?.getError('pattern') ">RePassword must start with upperCase then from 6 to 20</p>
+                <p *ngIf=" registerForm.get('rePassword')?.getError('mismatch') ">RePassword must Equal Password</p>
 
             </div>
         </div>
