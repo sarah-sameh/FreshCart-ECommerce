@@ -1,5 +1,7 @@
 import { Component, OnInit, Pipe } from '@angular/core';
+//import { EcomdataService } from '../../shared/services/productService/ecomdata.service';
 import { EcomdataService } from '../../shared/services/productService/ecomdata.service';
+
 import { CommonModule } from '@angular/common';
 import { Product } from '../../shared/interfaces/product';
 import { RouterModule } from '@angular/router';
@@ -8,19 +10,20 @@ import { TermTextPipe } from '../../term-text.pipe';
 import { SearchPipe } from '../../search.pipe';
 import { FormsModule } from '@angular/forms';
 import { CartService } from '../../shared/services/cartService/cart.service';
-
+import {  ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule,RouterModule, CarouselModule,TermTextPipe,  SearchPipe, FormsModule ],
+  imports: [CommonModule,RouterModule, CarouselModule,TermTextPipe,  SearchPipe, FormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit{
 
   constructor(private _EcomdataService:EcomdataService,
-              private _CartService:CartService
+              private _CartService:CartService,
+              private _ToastrService:ToastrService
   ){}
 
   products:Product[]=[];
@@ -88,7 +91,8 @@ export class HomeComponent implements OnInit{
     console.log('product is herrre ===> ', id);
     this._CartService.addToCart(id).subscribe({
       next:(res)=>{
-        console.log('response heeeree ==> ',res)
+        console.log('response heeeree ==> ',res);
+        this._ToastrService.success(res.message, 'Fresh Cart')
       },
       error:(err)=>{
         console.log(err)

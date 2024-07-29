@@ -4,7 +4,6 @@ import { NavBlankComponent } from './components/nav-blank/nav-blank.component';
 import { NavAuthComponent } from './components/nav-auth/nav-auth.component';
 
 import { CommonModule } from '@angular/common';
-import { ɵBrowserAnimationBuilder } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
