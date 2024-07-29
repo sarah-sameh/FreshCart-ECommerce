@@ -44,6 +44,7 @@ removeCartItem(id:string):void{
 changeCount(id:string, count:number):void{
  if(count > 0){
   this._CartService.updateCartProduct(id, count).subscribe({
+    
     next:(res)=>{
       console.log(res);
       this.cartDetails = res.data;
